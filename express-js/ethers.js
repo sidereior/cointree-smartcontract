@@ -17,21 +17,34 @@ app.listen(PORT, () => {
   console.warn(`App listening on http://localhost:${PORT}`);
 });
 
-app.get('/', (req, res) => {
-  return res.send('Received a GET HTTP method');
+app.get('/balance', (req, res) => {
+   return res.send(`balance: ${balanceInEth} ETH`);
+ });
+
+ app.get('/companies', (req, res) => {
+  return res.getCompanies();
 });
 
-app.post('/', (req, res) => {
-  return res.send('Received a POST HTTP method');
+ app.get('/balances', (req, res) => {
+  const companiesList = res.getCompanies();
+  const balances = [];
+  for (let i = 0; i < companiesList.length; i++) {
+    balances.push(res.getBalance(companiesList[i]));
+  }
+  return balances;
 });
-
-app.put('/', (req, res) => {
-  return res.send('Received a PUT HTTP method');
-});
-
-app.delete('/', (req, res) => {
-  return res.send('Received a DELETE HTTP method');
-});
+ 
+ app.post('/', (req, res) => {
+   return res.send('You are not authorized to make a POST HTTP method call');
+ });
+ 
+ app.put('/', (req, res) => {
+   return res.send('You are not authorized to make a PUT HTTP method call');
+ });
+ 
+ app.delete('/', (req, res) => {
+   return res.send('You are not authorized to make a DELETE HTTP method call');
+ });
 
 
 
