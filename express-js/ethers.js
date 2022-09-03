@@ -1,7 +1,7 @@
 const ethers = require('ethers');
 const jsonabi = require('./abi/contract.json');
 const provider = ethers.getDefaultProvider('rinkeby');
-const address = '0x88aa9612A85aB60f525C63eDbE6AbE9Af3826326';
+const address = '';
 
 provider.getBalance(address).then((balance) => {
     const contract = new ethers.Contract(address, jsonabi.abi, provider);
