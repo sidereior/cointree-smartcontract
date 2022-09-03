@@ -35,15 +35,15 @@ app.get('/balance', (req, res) => {
 });
  
  app.post('/', (req, res) => {
-   return res.send('You are not authorized to make a POST HTTP method call');
+   return res.send('no POST HTTP method call');
  });
  
  app.put('/', (req, res) => {
-   return res.send('You are not authorized to make a PUT HTTP method call');
+   return res.send('no PUT HTTP method call');
  });
  
  app.delete('/', (req, res) => {
-   return res.send('You are not authorized to make a DELETE HTTP method call');
+   return res.send('no DELETE HTTP method call');
  });
 
 
