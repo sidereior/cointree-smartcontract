@@ -1,28 +1,35 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.9;
 
-// Uncomment this line to use console.log
-// import "hardhat/console.sol";
+contract Vault {
+    receive() external payable {}
 
-contract Lock {
-    receive() external payable{}
+    constructor() {}
 
     string[] companies;
-    constructor()  {}
-    mapping(string => uint) public balance;
-    uint256 counter = 0;
-    //integers for now, update to UUID keccarck256
+
+    mapping(string => uint256) public balances;
+    uint counter = 0;
+
     function createCompany(string memory name) public {
-        balance[name] = 0;
         companies.push(name);
+        balances[name] = 0;
     }
 
     function deposit(string memory name) public payable {
-        balance[name] += msg.value;
+        balances[name] += msg.value;
     }
 
-    function distribute(uint256 price, string memory name) public {
-        balance[name] -= price;
-        payable(msg.sender).transfer(price);
+    function distribute(uint256 amount, string memory name) public {
+        balances[name] -= amount;
+        payable(msg.sender).transfer(amount);
+    }
+
+    function getBalance(string memory name) public view returns (uint) {
+        return balances[name];
+    }
+
+    function getCompanies() public view returns (string[] memory) {
+        return companies;
     }
 }
