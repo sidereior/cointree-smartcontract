@@ -7,12 +7,14 @@ pragma solidity ^0.8.0;
 contract Lock {
     receive() external payable{}
 
+    string[] companies;
     constructor()  {}
     mapping(string => uint) public balance;
     uint256 counter = 0;
     //integers for now, update to UUID keccarck256
     function createCompany(string memory name) public {
         balance[name] = 0;
+        companies.push(name);
     }
 
     function deposit(string memory name) public payable {
