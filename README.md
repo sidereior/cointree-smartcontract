@@ -7,4 +7,4 @@
 <p3>[Cointree Devpost Project](https://cointree.tech)</p3>
 <p4>[Cointree Backend](https://github.com/sidereior/cointree-backend)</p4>
 <p5>[Cointree WebClient](https://github.com/sidereior/cointree-web)</p5>
-<p6>[Cointree Backend](https://github.com/nikitamounier/Cointree-iOS)</p6>
+<p6>[Cointree Ios](https://github.com/nikitamounier/Cointree-iOS)</p6>
